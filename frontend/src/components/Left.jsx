@@ -4,7 +4,7 @@ import usePosition from "../utils/usePosition";
 
 import { formatDate } from "../utils/formatDate";
 import { getUnite } from "../utils/getUnite";
-
+//TODO: add a button to change the unit
 function Left({ today, city, unite, noPosition, setSidebar, setCoords }) {
   const [position] = usePosition();
 
