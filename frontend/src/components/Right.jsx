@@ -1,15 +1,16 @@
 import React from "react";
+import { Degrees, WeekDays } from "../styles/AppStyles";
 import { formatDate } from "../utils/formatDate";
 import { getUnite } from "../utils/getUnite";
 
 function Right({ comingDays, unite, setUnite }) {
   return (
     <>
-      <div className="degrees">
+      <Degrees>
         <button onClick={() => setUnite("metric")}>&#8451;</button>
         <button onClick={() => setUnite("imperial")}>&#8457;</button>
-      </div>
-      <div className="week-days">
+      </Degrees>
+      <WeekDays>
         {comingDays &&
           comingDays.slice(1, 7).map((day, i) => (
             <div className="day" key={i}>
@@ -28,7 +29,7 @@ function Right({ comingDays, unite, setUnite }) {
               </div>
             </div>
           ))}
-      </div>
+      </WeekDays>
     </>
   );
 }

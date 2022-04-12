@@ -86,6 +86,7 @@ export function getDirection(windDirection) {
     if (degree.min <= windDirection && windDirection <= degree.max) {
       direction = degree.desc;
     }
+    return direction;
   });
   return direction;
 }

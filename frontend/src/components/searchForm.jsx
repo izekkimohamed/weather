@@ -1,22 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { context } from "../context";
 
 import { FiSearch } from "react-icons/fi";
 import { BiChevronRight } from "react-icons/bi";
 
-import { getData } from "../utils/fetchData";
 import { ipUrl } from "../utils/urls";
 import { saveToLocalStorage } from "../utils/localstorage";
 
-function SearchForm({
-  sidebar,
-  setSidebar,
-  setCoords,
-  setLoading,
-  noPosition,
-}) {
+import { StyledSearchForm } from "../styles/AppStyles";
+import axios from "axios";
+
+function SearchForm() {
+  const { sidebar, setSidebar, coords, setCoords } = useContext(context);
   const recentSearches = JSON.parse(localStorage.getItem("recentSearches"));
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
+
+  const show = Object.keys(coords).length === 0 ? true : false;
 
   function handleOpen() {
     setOpen(!open);
@@ -25,20 +25,19 @@ function SearchForm({
     e.preventDefault();
     if (textInput === "") return;
     saveToLocalStorage(textInput);
-    setLoading(true);
-    getData(ipUrl, { q: textInput }).then((data) => {
+    axios.get(ipUrl, { params: { q: textInput } }).then((data) => {
       setCoords({
-        lat: data[0].lat,
-        lon: data[0].lon,
+        lat: data.data[0].lat,
+        lon: data.data[0].lon,
       });
       setOpen(false);
-      setLoading(false);
+      setSidebar(false);
     });
     setInput("");
   }
 
   return (
-    <div className={`form_search ${sidebar ? "active" : ""}`}>
+    <StyledSearchForm sidebar={sidebar}>
       <button className="close" id="close" onClick={() => setSidebar(false)}>
         X
       </button>
@@ -58,29 +57,32 @@ function SearchForm({
         <button type="submit">Search</button>
       </form>
 
-      {!noPosition && (
+      {!show && (
         <div className={`options ${open ? "open" : ""}`}>
           <div className="first-option" onClick={handleOpen}>
             recent searches
             <BiChevronRight />
           </div>
-          <ul id="recent-seraches">
-            {recentSearches &&
-              recentSearches.map((item, index) => (
-                <li key={index}>
-                  <button onClick={(e) => handleSearch(e, item)}>{item}</button>
-                </li>
-              ))}
-          </ul>
+          <button>
+            <ul id="recent-seraches">
+              {recentSearches &&
+                recentSearches.map((item, index) => (
+                  <li key={index}>
+                    <i onClick={(e) => handleSearch(e, item)}>{item}</i>
+                  </li>
+                ))}
+            </ul>
+          </button>
         </div>
       )}
-      {noPosition && (
+
+      {show && (
         <div className="no-position">
           <h1>No position Found</h1>
           <p> Enable The Position or Search For Location </p>
         </div>
       )}
-    </div>
+    </StyledSearchForm>
   );
 }
 

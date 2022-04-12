@@ -1,17 +1,20 @@
+import { useContext } from "react";
+
 import { AiOutlineCompass } from "react-icons/ai";
 import { IoLocationSharp } from "react-icons/io5";
-import usePosition from "../utils/usePosition";
 
 import { formatDate } from "../utils/formatDate";
 import { getUnite } from "../utils/getUnite";
+import { Main } from "../styles/AppStyles";
+import { context } from "../context";
 //TODO: add a button to change the unit
-function Left({ today, city, unite, noPosition, setSidebar, setCoords }) {
-  const [position] = usePosition();
+function Left({ today, city, unite }) {
+  const { setSidebar, position, clientCoords, setCoords } = useContext(context);
 
-  const getPosition = () => setCoords(position);
+  const getPosition = () => setCoords(clientCoords);
 
   return (
-    <div className="main">
+    <Main>
       <div className="header">
         <div className="search">
           <button
@@ -20,7 +23,7 @@ function Left({ today, city, unite, noPosition, setSidebar, setCoords }) {
             onClick={() => setSidebar(true)}>
             Search for places
           </button>
-          {noPosition === false && (
+          {position && (
             <button className="search-btn" onClick={getPosition}>
               <AiOutlineCompass />
             </button>
@@ -48,7 +51,7 @@ function Left({ today, city, unite, noPosition, setSidebar, setCoords }) {
           </div>
         </div>
       </div>
-    </div>
+    </Main>
   );
 }
 

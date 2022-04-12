@@ -1,12 +1,12 @@
 import axios from "axios";
+import { useContext } from "react";
+import { useQuery } from "react-query";
+import { context } from "../context";
 
-export async function getData(url, coords, q) {
-  const params = coords ? { ...coords } : q;
-  const options = {
-    url: url,
-    method: "GET",
-    params: params,
-  };
-  const { data } = await axios.request(options);
-  return data;
-}
+const useFetch = (url) => {
+  const { coords } = useContext(context);
+  return useQuery(["weather", url, coords], () =>
+    axios.get(url, { params: { ...coords } }).then((res) => res.data),
+  );
+};
+export default useFetch;

@@ -1,12 +1,13 @@
 import React from "react";
 import { FiNavigation } from "react-icons/fi";
+import { Heighlights } from "../styles/AppStyles";
 import { getDirection } from "../utils/getDirection";
 
 function Details({ today }) {
   const { humidity, visibility, wind_deg, wind_speed, pressure } = today;
   return (
     <>
-      <div className="heighlights">
+      <Heighlights wind_deg={wind_deg} percent={humidity}>
         <div className="heighlights-wrapper">
           <p>Wind status</p>
           <h2>
@@ -51,7 +52,7 @@ function Details({ today }) {
             <span>hPa</span>{" "}
           </h2>
         </div>
-      </div>
+      </Heighlights>
     </>
   );
 }

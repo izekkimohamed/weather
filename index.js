@@ -31,7 +31,7 @@ app.get("/ip", (req, res) => {
       // console.log(req);
     })
     .catch(function (error) {
-      res.send(error);
+      res.status(404).send("Error fetching Data");
     });
 });
 
@@ -47,9 +47,13 @@ app.get("/weather", cors(corConfig), (req, res) => {
       appid: process.env.WEATHER_API_KEY,
     },
   };
-  axios(options).then((response) => {
-    res.status(200).send(response.data);
-  });
+  axios(options)
+    .then((response) => {
+      res.status(200).send(response.data);
+    })
+    .catch(function (error) {
+      res.status(404).send("Error fetching Data");
+    });
 });
 
 app.get("/city", cors(corConfig), (req, res) => {
@@ -68,7 +72,7 @@ app.get("/city", cors(corConfig), (req, res) => {
       res.status(200).send(response.data);
     })
     .catch(function (error) {
-      res.send(error);
+      res.status(404).send("Error fetching Data");
     });
 });
 
