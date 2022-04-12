@@ -7,10 +7,9 @@ import Right from "./components/Right";
 import SearchForm from "./components/searchForm";
 
 //utils
-
 import { cityUrl, weatherUrl } from "./utils/urls";
 import useFetch from "./utils/fetchData";
-
+//Styles
 import { Container, Loading, MoreDetails } from "./styles/AppStyles";
 
 function App() {
@@ -20,7 +19,6 @@ function App() {
   if (isLoading || isLoadingCity) return <Loading>Loading...</Loading>;
   return (
     <>
-      {/* <GlobalStyles /> */}
       <Container>
         <SearchForm />
         {weatherData && city && (

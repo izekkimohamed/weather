@@ -18,7 +18,7 @@ export const StyledSearchForm = styled.div`
   display: flex;
   gap: 2rem;
   flex-direction: column;
-  padding: 2rem;
+  padding: 1rem;
   position: absolute;
   inset: 0;
   height: 100vh;
@@ -50,9 +50,9 @@ export const StyledSearchForm = styled.div`
     > div {
       flex-grow: 1;
       display: flex;
-      justify-content: flex-start;
+      justify-content: space-around;
       align-items: center;
-      padding: 0.5rem;
+      padding: 0.5rem 0;
       border: 1px solid var(--text);
       gap: 1rem;
       cursor: pointer;
@@ -65,7 +65,7 @@ export const StyledSearchForm = styled.div`
     }
   }
 
-  form input {
+  input {
     all: unset;
     color: var(--text);
   }
@@ -129,12 +129,12 @@ export const StyledSearchForm = styled.div`
 
 export const Main = styled.div`
   background: var(--bg-secondary);
-  width: 100vw;
+  width: min(100vw, 500px);
   padding: 1rem 0;
   position: relative;
-  @media only screen and (min-width: 850px) {
+  /* @media only screen and (min-width: 850px) {
     width: 500px;
-  }
+  } */
   .header {
     display: flex;
     flex-direction: column;
@@ -276,12 +276,14 @@ export const Degrees = styled.div`
 
   button {
     all: unset;
-    background: var(--bg-btn);
+    background: var(--bg-secondary);
     color: var(--text);
     width: 40px;
     height: 40px;
     text-align: center;
     border-radius: 50%;
+    font-weight: 500;
+    font-size: 26px;
     cursor: pointer;
   }
   @media only screen and (min-width: 850px) {

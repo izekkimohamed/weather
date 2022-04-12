@@ -79,7 +79,7 @@ function SearchForm() {
       {show && (
         <div className="no-position">
           <h1>No position Found</h1>
-          <p> Enable The Position or Search For Location </p>
+          <p> Please Enable The Position or Search For Location </p>
         </div>
       )}
     </StyledSearchForm>
