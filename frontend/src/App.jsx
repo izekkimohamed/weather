@@ -1,4 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { useQuery } from "react-query";
+
+import { context } from "./context";
 
 //components
 import Details from "./components/Details";
@@ -7,10 +10,12 @@ import Right from "./components/Right";
 import SearchForm from "./components/searchForm";
 
 //utils
-import { cityUrl, weatherUrl } from "./utils/urls";
+
+import { cityUrl, weatherUrl, ipUrl } from "./utils/urls";
 import useFetch from "./utils/fetchData";
-//Styles
+
 import { Container, Loading, MoreDetails } from "./styles/AppStyles";
+import "./app.css";
 
 function App() {
   const [unite, setUnite] = useState("metric");
@@ -19,6 +24,7 @@ function App() {
   if (isLoading || isLoadingCity) return <Loading>Loading...</Loading>;
   return (
     <>
+      {/* <GlobalStyles /> */}
       <Container>
         <SearchForm />
         {weatherData && city && (
