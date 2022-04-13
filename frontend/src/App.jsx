@@ -12,7 +12,7 @@ import { cityUrl, weatherUrl } from "./utils/urls";
 import useFetch from "./utils/fetchData";
 
 import { Container, Loading, MoreDetails } from "./styles/AppStyles";
-import "./App.css";
+import "./app.css";
 
 function App() {
   const [unite, setUnite] = useState("metric");
