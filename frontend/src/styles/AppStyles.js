@@ -87,6 +87,7 @@ export const StyledSearchForm = styled.div`
   }
   .open {
     border: 1px solid var(--text);
+    overflow: auto;
     div {
       border: none;
     }
@@ -101,11 +102,9 @@ export const StyledSearchForm = styled.div`
   }
   ul li {
     padding: 1rem;
+    font-weight: 500;
   }
-  a {
-    text-decoration: none;
-    color: var(--text);
-  }
+
   ion-icon {
     cursor: pointer;
   }
@@ -414,4 +413,15 @@ export const MoreDetails = styled.div`
   place-items: center;
   gap: 1rem;
   padding: 1rem 0;
+`;
+export const Footer = styled.footer`
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+
+  text-align: center;
+
+  color: var(--text-secondary);
 `;

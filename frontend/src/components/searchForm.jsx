@@ -68,7 +68,7 @@ function SearchForm() {
               {recentSearches &&
                 recentSearches.map((item, index) => (
                   <li key={index}>
-                    <i onClick={(e) => handleSearch(e, item)}>{item}</i>
+                    <span onClick={(e) => handleSearch(e, item)}>{item}</span>
                   </li>
                 ))}
             </ul>

@@ -1,6 +1,6 @@
 import React from "react";
 import { FiNavigation } from "react-icons/fi";
-import { Heighlights } from "../styles/AppStyles";
+import { Footer, Heighlights } from "../styles/AppStyles";
 import { getDirection } from "../utils/getDirection";
 
 function Details({ today }) {
@@ -53,6 +53,7 @@ function Details({ today }) {
           </h2>
         </div>
       </Heighlights>
+      <Footer>created by mohamed IZEKKI - devChallenges.io</Footer>
     </>
   );
 }

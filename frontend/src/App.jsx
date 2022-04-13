@@ -1,7 +1,4 @@
-import { useEffect, useState, useContext } from "react";
-import { useQuery } from "react-query";
-
-import { context } from "./context";
+import { useState } from "react";
 
 //components
 import Details from "./components/Details";
@@ -11,11 +8,11 @@ import SearchForm from "./components/searchForm";
 
 //utils
 
-import { cityUrl, weatherUrl, ipUrl } from "./utils/urls";
+import { cityUrl, weatherUrl } from "./utils/urls";
 import useFetch from "./utils/fetchData";
 
 import { Container, Loading, MoreDetails } from "./styles/AppStyles";
-import "./app.css";
+import "./App.css";
 
 function App() {
   const [unite, setUnite] = useState("metric");
