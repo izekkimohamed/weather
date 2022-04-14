@@ -18,7 +18,13 @@ function App() {
   const [unite, setUnite] = useState("metric");
   const { data: weatherData, isLoading } = useFetch(weatherUrl);
   const { data: city, isLoading: isLoadingCity } = useFetch(cityUrl);
-  if (isLoading || isLoadingCity) return <Loading>Loading...</Loading>;
+
+  if (isLoading || isLoadingCity)
+    return (
+      <Loading>
+        <h1>Loading...</h1>
+      </Loading>
+    );
   return (
     <>
       {/* <GlobalStyles /> */}

@@ -8,6 +8,18 @@ export default function GlobaleContext({ children }) {
   const [sidebar, setSidebar] = useState(true);
   const [coords, setCoords] = useState({});
 
+  const fetchData = async () => {
+    const request = await fetch(
+      `https://ipinfo.io/json?token=${process.env.REACT_APP_IPINFO_TOKEN}`,
+    );
+    const json = await request.json();
+    setCoords({
+      lat: json.loc.split(",")[0],
+      lon: json.loc.split(",")[1],
+    });
+    setSidebar(false);
+  };
+
   const onChange = (position) => {
     setPosition(true);
     setCoords({
@@ -22,8 +34,7 @@ export default function GlobaleContext({ children }) {
   };
 
   const onError = () => {
-    setPosition(false);
-    setSidebar(true);
+    fetchData();
   };
 
   useEffect(() => {

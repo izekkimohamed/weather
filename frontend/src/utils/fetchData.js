@@ -5,8 +5,12 @@ import { context } from "../context";
 
 const useFetch = (url) => {
   const { coords } = useContext(context);
-  return useQuery(["weather", url, coords], () =>
-    axios.get(url, { params: { ...coords } }).then((res) => res.data),
+  return useQuery(
+    ["weather", url, coords],
+    () => axios.get(url, { params: { ...coords } }).then((res) => res.data),
+    {
+      retry: 1,
+    },
   );
 };
 export default useFetch;

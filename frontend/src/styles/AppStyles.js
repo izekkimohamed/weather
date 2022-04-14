@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 import imgBg from "../assets/bg.png";
 import loadingBg from "../assets/loading.svg";
@@ -372,6 +372,15 @@ export const Heighlights = styled.div`
     flex-wrap: wrap;
   }
 `;
+const loading = keyframes`
+  from {
+      opacity: 0;
+    }
+   
+    to {
+      opacity: 1;
+    }
+`;
 
 export const Loading = styled.div`
   display: flex;
@@ -393,18 +402,7 @@ export const Loading = styled.div`
     background-image: url(${loadingBg});
   }
   h1 {
-    animation: loading 2s ease-in-out infinite;
-  }
-  @keyframes loading {
-    0% {
-      opacity: 0;
-    }
-    50% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
+    animation: ${loading} 1s ease-in-out infinite alternate-reverse;
   }
 `;
 
