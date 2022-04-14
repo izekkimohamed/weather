@@ -7,8 +7,7 @@ const cors = require("cors");
 const app = express();
 
 const corConfig = {
-  origin: "*",
-  // process.env.ALLOWED_ORIGIN_URL, // restrict calls to those this address
+  origin: process.env.ALLOWED_ORIGIN_URL,
   methods: "GET",
   optionsSuccessStatus: 200,
 };
